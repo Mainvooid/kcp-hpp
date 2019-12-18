@@ -1,13 +1,14 @@
 //=====================================================================
 //
 // KCP - A Better ARQ Protocol Implementation
-// skywind3000 (at) gmail.com, 2010-2011
+// 原作者: skywind3000 (at) gmail.com, 2010-2011
 //  
 // Features:
 // + Average RTT reduce 30% - 40% vs traditional ARQ like tcp.
 // + Maximum RTT reduce three times vs tcp.
 // + Lightweight, distributed as a single source file.
 //
+// 当前项目地址: https://github.com/Mainvooid/kcp-hpp
 //=====================================================================
 #ifndef __IKCP_H__
 #define __IKCP_H__
