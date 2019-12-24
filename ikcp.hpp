@@ -299,7 +299,7 @@ namespace detail {
 */
 #define IQUEUE_FOREACH_ENTRY(iterator, head, TYPE, MEMBER) \
     for ((iterator) = IQUEUE_ENTRY((head)->next, TYPE, MEMBER); \
-        !IQUEUE_IS_EMPTY((head)) && (iterator) != nullptr && (&((iterator)->MEMBER) != (head)); \
+        (!IQUEUE_IS_EMPTY((head))) && ((iterator) != nullptr) && (&((iterator)->MEMBER) != (head)); \
         (iterator) = IQUEUE_ENTRY((iterator)->MEMBER.next, TYPE, MEMBER))
 
 /**
@@ -308,7 +308,7 @@ namespace detail {
 */
 #define IQUEUE_FOREACH_ENTRY_PREV(iterator, head, TYPE, MEMBER) \
     for ((iterator) = IQUEUE_ENTRY((head)->prev, TYPE, MEMBER); \
-        !IQUEUE_IS_EMPTY((head)) && (iterator) != nullptr && (&((iterator)->MEMBER) != (head)); \
+        (!IQUEUE_IS_EMPTY((head))) && ((iterator) != nullptr) && (&((iterator)->MEMBER) != (head)); \
         (iterator) = IQUEUE_ENTRY((iterator)->MEMBER.prev, TYPE, MEMBER))
 
 /**
@@ -666,11 +666,9 @@ namespace detail {
     static void ikcp_qprint(const char *name, const iqueue_head *head)
     {
         printf("<%s>: [", name);
-        iqueue_head * p;
-        for (p = head->next; !iqueue_is_empty(head) & p != head; p = p->next) {
-            ikcp_seg *seg = iqueue_entry(p, ikcp_seg, node);
+        ikcp_seg *seg = nullptr;
+        iqueue_foreach_entry(seg, head, ikcp_seg, node) {
             printf("(%lu %d)", (unsigned long)seg->sn, (int)(seg->ts % 10000));
-            if (p->next != head) printf(",");
         }
         printf("]\n");
     }
