@@ -1,17 +1,24 @@
 
 ## kcp-hpp
-.hpp版kcp
-- 完整注释
-- RDC可靠性数据控制支持
-- 丢包率等数据统计
 
-`KCP_EXTENTION`宏开启扩展.
+A single header file version of kcp protocol.
+- complete notes.
+- RDC reliability data control support.
+- loss rate and other data statistics.
 
+define macro `KCP_EXTENTION` to open extention.
 
-include时可以使用自定义命名空间包含，这样可以方便调用所有接口函数。
+You can use custom namespace inclusion to make it easy to call all interface functions.
+
 ```cpp
 namespace kcp{
 #include<ikcp.hpp>
 }
 kcp::ikcp_create();
 ```
+
+#### KCP Features
+
+- Average RTT reduce 30% - 40% vs traditional ARQ like tcp.
+- Maximum RTT reduce three times vs tcp.
+- Lightweight, distributed as a single source file.
