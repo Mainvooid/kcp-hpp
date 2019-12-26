@@ -17,6 +17,12 @@ namespace kcp{
 kcp::ikcp_create();
 ```
 
+Used as a project submodule:
+```bash
+git submodule add https://github.com/Mainvooid/kcp-hpp.git /3rdparty
+git submodule update --init --recursive
+```
+
 #### KCP Features
 
 - Average RTT reduce 30% - 40% vs traditional ARQ like tcp.
